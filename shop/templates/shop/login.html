@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 2rem auto; padding: 2rem; background: var(--surface-color); border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+    <h2 style="text-align: center; margin-top: 0;">Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+    </form>
+    <p style="margin-top: 1em; text-align: center;">
+        Use a demo account, e.g., <strong>alice</strong> / <strong>password</strong>.
+    </p>
+</div>
+{% endblock %}
