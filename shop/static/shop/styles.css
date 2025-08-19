@@ -26,11 +26,31 @@
     padding: 0;
 }
 
+html {
+    height: 100%; /* Ensure html is full height */
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Make body at least full height */
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+}
+
+main {
+    flex-grow: 1; /* This makes the <main> tag fill available space */
+}
+
+/* --- END OF STICKY FOOTER LOGIC --- */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%; /* Ensures container behaves correctly */
 }
 
 .container {
@@ -117,6 +137,7 @@ footer {
    3. COMPONENTS: BUTTONS, FORMS, CARDS
    ========================================================================== */
 
+/* General Button Styles */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -145,12 +166,12 @@ footer {
 .btn-sm { padding: 0.5rem 1rem; }
 .btn-full { width: 100%; }
 
+/* Product Grid & Cards */
 .product-grid, .recommendations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 }
-
 .product-card {
     background: var(--surface-color);
     border-radius: var(--border-radius);
@@ -189,6 +210,44 @@ footer {
     background-color: #fafafa;
     display: flex;
     justify-content: flex-end;
+}
+
+/* Quantity Widget */
+.quantity-widget {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+.quantity-btn {
+    background-color: var(--background-color);
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: 600;
+    transition: background-color var(--transition-speed);
+}
+.quantity-btn:hover {
+    background-color: #e2e6ea;
+}
+.quantity-input {
+    width: 60px;
+    padding: 0.5rem;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-weight: 500;
+    -moz-appearance: textfield; /* Firefox */
+}
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 
@@ -279,64 +338,6 @@ footer {
     align-items: flex-end;
     gap: 0.5rem;
 }
-.quantity-form {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.quantity-input {
-    width: 60px;
-    padding: 0.5rem;
-    text-align: center;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-}
-/* Add these styles to your shop/static/shop/styles.css */
-
-.quantity-widget {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-}
-
-.quantity-btn {
-    background-color: var(--background-color);
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 0.75rem;
-    font-size: 1.2rem;
-    line-height: 1;
-    font-weight: 600;
-    transition: background-color var(--transition-speed);
-}
-
-.quantity-btn:hover {
-    background-color: #e2e6ea;
-}
-
-/* Redefine quantity-input to fit inside the widget */
-.quantity-input {
-    width: 60px;
-    padding: 0.5rem;
-    text-align: center;
-    border: none;
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    font-size: 1rem;
-    font-weight: 500;
-    -moz-appearance: textfield; /* Firefox */
-}
-.quantity-input::-webkit-outer-spin-button,
-.quantity-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.update-btn.hidden {
-    display: none;
-}
 .cart-summary-card {
     background: var(--surface-color);
     padding: 2rem;
@@ -368,6 +369,66 @@ footer {
     padding: 4rem 2rem;
     background: var(--surface-color);
     border-radius: var(--border-radius);
+}
+
+/* Modern Login Page */
+.login-container {
+    max-width: 450px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.login-header h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+.login-header p {
+    color: var(--text-muted);
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+.form-error, .form-error-summary {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    border-radius: 4px;
+}
+.login-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
 
 

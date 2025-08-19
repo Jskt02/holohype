@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from .models import Product
+import copy  # <-- 1. Import the copy module
 
 def cart_context(request):
     """A context processor to make the cart available on all pages."""
@@ -50,9 +51,13 @@ class Cart:
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
         
-        cart = self.cart.copy()
+        # THE FIX: Use copy.deepcopy() to create a fully independent copy
+        # of the cart, preventing modification of the original session data.
+        cart = copy.deepcopy(self.cart)
+        
         for product in products:
-            cart[str(product.id)]['product'] = product
+            if str(product.id) in cart:
+                cart[str(product.id)]['product'] = product
         
         for item in cart.values():
             item['price'] = Decimal(item['price'])

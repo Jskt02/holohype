@@ -3,15 +3,38 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div style="max-width: 500px; margin: 2rem auto; padding: 2rem; background: var(--surface-color); border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
-    <h2 style="text-align: center; margin-top: 0;">Login</h2>
-    <form method="post">
+<div class="login-container">
+    <div class="login-header">
+        <h2>Welcome Back</h2>
+        <p>Please enter your details to sign in.</p>
+    </div>
+
+    <form method="post" class="login-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+
+        {% if form.non_field_errors %}
+            <div class="form-error-summary">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="form-error">{{ field.errors.as_text|cut:"* " }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
     </form>
-    <p style="margin-top: 1em; text-align: center;">
-        Use a demo account, e.g., <strong>alice</strong> / <strong>password</strong>.
-    </p>
+
+    <div class="login-footer">
+        <p>This is a demo site. Use credentials like <strong>alice / password</strong>.</p>
+    </div>
 </div>
 {% endblock %}

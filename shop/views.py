@@ -27,13 +27,23 @@ def product_detail(request, pk):
 
 @require_POST
 def add_to_cart(request, product_id):
+    """Adds a product to the session-based cart."""
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     form = AddToCartForm(request.POST)
+
     if form.is_valid():
         quantity = form.cleaned_data['quantity']
-        cart.add(product=product, quantity=quantity)
-    return redirect('shop:cart_view')
+        # THE FIX: Add the override_quantity=True argument here.
+        cart.add(
+            product=product,
+            quantity=quantity,
+            override_quantity=True 
+        )
+        return redirect('shop:cart_view')
+    
+    return redirect('shop:product_detail', pk=product_id)
+
 
 def remove_from_cart(request, product_id):
     cart = Cart(request)
